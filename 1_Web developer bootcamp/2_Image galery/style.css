@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+}
+
+.img-fluid {
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    width: 100%;
+    height: 250px;
+    margin-bottom: 1.5rem;
+  }
+
+   .rounded {
+    border-radius:0.35rem!important;
+}
