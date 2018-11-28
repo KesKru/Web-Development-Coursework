@@ -1,0 +1,29 @@
+* {
+    font-family: 'Raleway', sans-serif;
+    border-radius: 20px;
+}
+
+/* alerts */
+
+/* Badge */
+
+.badge {
+    border-radius: 2em;
+    background-color: rgb(155, 155, 155); 
+}
+
+/* Breadcrumbs */
+
+/* Buttons */
+
+.btn {
+    border-radius: 2em;
+    background-color: rgb(240, 240, 240); 
+}
+
+/* Button group */
+
+
+hr {
+    border-top: solid 2px lightgrey;
+}
