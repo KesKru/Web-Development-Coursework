@@ -1,22 +1,28 @@
-.container {
-    width: 100%;
+
+body {
+    padding-top: 65px;
+}
+body * {
+    color: rgb(34, 34, 34);
 }
 
 .img-fluid {
-    object-fit: none;
-    /* Do not scale the image */
-    object-position: center;
-    /* Center the image within the element */
-    width: 100%;
+    object-fit: cover;
     height: 250px;
+    width: 100%;
     margin-bottom: 1.5rem;
     transition: 0.5s;
 }
 
 .img-fluid:hover {
-    opacity: 0.70;
+    opacity: 0.5;
 }
 
 .rounded {
     border-radius: 0.35rem !important;
+}
+
+
+nav, .jumbotron {
+    background-color: rgb(240, 240, 240);
 }
