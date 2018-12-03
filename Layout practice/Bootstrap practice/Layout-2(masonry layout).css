@@ -1,31 +1,42 @@
 html {
-    font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
-body {
-    position: relative;
-    margin: 0;
-    min-width: 100vw;
-    overflow-x: hidden;
-  }
-  
-  .row {
-    columns: 250px 3;
-    column-gap: 20px;
-    max-width: 80vw;
-    margin: 0 auto;
-    display: block;
-    column-fill: balance;
-  }
-  
-  .child {
-    min-width: calc(100% - 4px);
-    margin: 10px;
-    background-color: white;
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;  
-    page-break-inside: avoid;
-    break-inside: avoid-column;
-  }
+/* body {
+  position: relative;
+  margin: 0;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
 
+.row {
+  columns: 250px 3;
+  column-gap: 20px;
+  max-width: 80vw;
+  margin: 0 auto;
+  display: block;
+  column-fill: balance;
+}
+
+.child {
+  min-width: calc(100% - 4px);
+  margin: 10px;
+  background-color: white;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  page-break-inside: avoid;
+  break-inside: avoid-column;
+} */
+
+
+/* 
+.image-and-text:nth-child(3n) {
+  border: solid 2px red;
+}
+.image-and-text:nth-child(3n-1) {
+  border: solid 2px blue;
+}
+.image-and-text:nth-child(3n-2) {
+  border: solid 2px yellow;
+} */
