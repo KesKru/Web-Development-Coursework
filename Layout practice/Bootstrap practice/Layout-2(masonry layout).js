@@ -35,33 +35,97 @@ console.log("hello!!");
 
 
 
-// --------------------------------------------
+// --------------------MASONRY LAYOUT WITH JQUERY------------------------
 
-let sortingArray = $(".child");
+
+// let sortingArray = $(".child");
+
+// function resizeFn() {
+
+//     let breakPoints = $(window).width();
+
+//     if (breakPoints >= 992) {
+//         // large breakpoint
+
+//         let Arr1 = $(".child:nth-child(3n-2)");
+//         let Arr2 = $(".child:nth-child(3n-1)");
+//         let Arr3 = $(".child:nth-child(3n)");
+//         // --------------------------------------------
+//         $(".1").html(Arr1);
+//         $(".2").html(Arr2);
+//         $(".3").html(Arr3);
+
+//     } else if (breakPoints >= 576) {
+//         // medium breakpoint
+
+//         let Arr1 = $(".child:nth-child(2n-1)");
+//         let Arr2 = $(".child:nth-child(2n)");
+//         // --------------------------------------------
+//         $(".1").html(Arr1);
+//         $(".2").html(Arr2);
+
+//     } else {
+
+//     }
+// }
+
+// resizeFn();
+
+// var resizeTimer;
+// $(window).on('resize', function () {
+//     clearTimeout(resizeTimer);
+//     resizeTimer = setTimeout(function () {
+//         $(".1").html(sortingArray);
+//         resizeFn();
+//     }, 250);
+
+// });
+
+
+// --------------------MASONRY LAYOUT WITH VANILLA JS------------------------
+
+
+
+let sortingArray = document.querySelectorAll(".child");
 
 function resizeFn() {
 
-    let breakPoints = $(window).width();
+    let breakPoints = window.innerWidth;
 
     if (breakPoints >= 992) {
-        // large breakpoint
 
-        let Arr1 = $(".child:nth-child(3n-2)");
-        let Arr2 = $(".child:nth-child(3n-1)");
-        let Arr3 = $(".child:nth-child(3n)");
-        // --------------------------------------------
-        $(".1").html(Arr1);
-        $(".2").html(Arr2);
-        $(".3").html(Arr3);
+        let Arr1 = document.querySelectorAll(".child:nth-child(3n-2)");
+        let Arr2 = document.querySelectorAll(".child:nth-child(3n-1)");
+        let Arr3 = document.querySelectorAll(".child:nth-child(3n)");
+
+        let col1 = document.querySelector(".one");
+        let col2 = document.querySelector(".two");
+        let col3 = document.querySelector(".tree");
+
+        for (let i = 0; i < Arr1.length; i++) {
+            col1.insertAdjacentElement("beforeend", Arr1[i]);
+        }
+        for (let i = 0; i < Arr2.length; i++) {
+            col2.insertAdjacentElement("beforeend", Arr2[i]);
+        }
+        for (let i = 0; i < Arr3.length; i++) {
+            col3.insertAdjacentElement("beforeend", Arr3[i]);
+        }
 
     } else if (breakPoints >= 576) {
-        // medium breakpoint
 
-        let Arr1 = $(".child:nth-child(2n-1)");
-        let Arr2 = $(".child:nth-child(2n)");
-        // --------------------------------------------
-        $(".1").html(Arr1);
-        $(".2").html(Arr2);
+        let Arr1 = document.querySelectorAll(".child:nth-child(2n-1)");
+        let Arr2 = document.querySelectorAll(".child:nth-child(2n)");
+
+        let col1 = document.querySelector(".one");
+        let col2 = document.querySelector(".two");
+
+        for (let i = 0; i < Arr1.length; i++) {
+            col1.insertAdjacentElement("beforeend", Arr1[i]);
+        }
+        for (let i = 0; i < Arr2.length; i++) {
+            col2.insertAdjacentElement("beforeend", Arr2[i]);
+        }
 
     } else {
 
@@ -71,60 +135,20 @@ function resizeFn() {
 resizeFn();
 
 var resizeTimer;
-$(window).on('resize', function () {
+
+window.onresize = function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {
-        $(".1").html(sortingArray);
+        let col1 = document.querySelector(".one");
+        col1.innerHTML = "";
+        for (let i = 0; i < sortingArray.length; i++) {
+            col1.insertAdjacentElement("beforeend", sortingArray[i]);
+        }
         resizeFn();
     }, 250);
-
-});
-
-// window.onresize = function(){
-//     setTimeout(function() {
-//         $(".1").html(sortingArray);
-//         resizeFn();
-//     }, 500);
-//   };
+}
 
 
-
-
-//   $(window).resize(function () {
-//     waitForFinalEvent(function(){
-//       alert('Resize...');
-//       //...
-//     }, 500, "some unique string");
-// });
-
-
-// $(window).resize(resizeFn());
-
-// $(document).ready(function () {
-//     $(window).trigger('resize');
-// });
-
-
-
-// mobile default
-
-
-
-
-
-
-
-// let Arr1 = $(".child:nth-child(3n-2)");
-// let Arr2 = $(".child:nth-child(3n-1)");
-// let Arr3 = $(".child:nth-child(3n)");
-// // --------------------------------------------
-// $(".1").html(Arr1);
-// $(".2").html(Arr2);
-// $(".3").html(Arr3);
-// // --------------------------------------------
-// console.log(Arr1);
-// console.log(Arr2);
-// console.log(Arr3);
 
 
 // --------------------------------------------
