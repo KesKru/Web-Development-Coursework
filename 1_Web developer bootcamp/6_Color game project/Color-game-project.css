@@ -1,35 +1,45 @@
-
-body {
-    padding-top: 65px;
-    background: url(background.jpg) no-repeat center center fixed;
-    background-size: cover;
+html, body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 15px;
     height: 100%;
-}
-body * {
-    color: rgb(255, 255, 255);
-}
+  }
 
-.navbar {
-    background-color: rgba(255, 255, 255, 0);
-}
 
-.navbar a:hover {
-    color: rgba(255, 255, 255, 0.45);
-} 
+  .container-fluid {
+      background: lightgray;
+      height: 100%;
 
-.col {
-    height: 84vh;
-    margin-bottom: -65px;
-}
+  }
 
-.btn {
-    /* background-color: transparent; */
-    background-color: rgba(255, 255, 255, 0.3);
-    transition: 0.5s;
-    /* border: 1.5px solid white; */
 
-}
+  .row {
+      margin-bottom: 0px;
+  }
 
-.btn:hover {
-    background-color: rgba(255, 255, 255, 0.45);
-} 
+  .blue-row{
+      background: rgb(82, 112, 179);
+  }
+
+  .white-row{
+      background: rgb(255, 255, 255);
+  }
+
+  .grey-row{
+      background: rgb(58, 58, 58);
+      height: 100%;
+  }
+
+
+  .color-box {
+    background: rgb(197, 197, 197);
+    width: 100%;
+    height: 13vw;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  
