@@ -1,0 +1,14 @@
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
+.container * {
+  transition: alls ease-in-out;
+  /* border: solid 5px red; */
+}
+
+.child {
+  width: 200px;
+  height: 100%;
+}
+

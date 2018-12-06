@@ -1,23 +1,10 @@
-.row {
-    margin: 0;
-    padding: 0;
+.uk-animation-scale-up {
+    /* border: 1px solid black; */
+    /* width: 250px; */
+    animation-duration: 1s;
 }
-
-html,
-body {
-    background: rgb(241, 241, 241);
-    height: 100%;
-}
-
-
-
-.darkrow {
-    background: rgb(199, 199, 199);
-    position: sticky;
-}
-
-
-.col-2 {
-    background: rgb(219, 219, 219);
-    position: sticky;
+.const {
+    width: 80vw;
+    margin: auto;
+    /* display: inline-block; */
 }
