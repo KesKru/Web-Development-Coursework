@@ -1,10 +1,51 @@
-.uk-animation-scale-up {
-    /* border: 1px solid black; */
-    /* width: 250px; */
+/* .uk-animation-scale-up {
     animation-duration: 1s;
 }
 .const {
     width: 80vw;
     margin: auto;
-    /* display: inline-block; */
+} */
+
+
+
+.box:nth-child(1) {
+    transform: rotate(45deg) translateY(200px);
+    /* transform: translateY(200px) */
 }
+
+.cont{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box-1{
+    position: absolute;
+    width: 30vh;
+    height: 30vh;
+    background: grey;
+    border: 2px solid black;
+    border-radius: 250px;
+
+} 
+
+.box-2 {
+    position: absolute;
+    width: 15vh;
+    height: 15vh;
+    background: grey;
+    border: 2px solid black;  
+    border-radius: 150px;
+
+}
+
+
+
+
+/* .box-1:nth-child(1) {
+    transform: rotate(45deg) translateY(200px);
+    border-radius: 150px;
+} */
