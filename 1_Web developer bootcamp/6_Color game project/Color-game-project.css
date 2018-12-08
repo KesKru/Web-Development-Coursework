@@ -58,5 +58,9 @@ h1, h3 {
     background: rgb(230, 230, 230);
     transition: all ease 0.3s
 }
+.btn-inactive:hover {
+   background: $
+}
 
 
+--color: 

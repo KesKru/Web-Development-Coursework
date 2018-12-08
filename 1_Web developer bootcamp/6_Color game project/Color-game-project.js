@@ -42,24 +42,11 @@ btnHard.addEventListener("click", function () {
     console.log(colorBox);
 });
 
-
-
-// console.log(colorBox);
-
-
-// console.log(btnAll);
-
-
-
-
-
 // random colors in boxes
-
 
 function randomNr(nr) {
     return Math.floor(Math.random() * nr);
 }
-
 
 function setReset() {
     for (let i = 0; i < colorBox.length; i++) {

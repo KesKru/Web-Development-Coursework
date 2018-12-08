@@ -1,0 +1,26 @@
+
+html, body, .container, .row {
+    height: 100%;
+}
+
+.list-group-item {
+    background: rgb(240, 240, 240);
+    color: rgb(34, 34, 34);
+    border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+
+
+.list-group-item:nth-last-of-type(1) {
+    border-bottom: 0;
+
+}
+
+.list-group-item:hover {
+    background: rgb(216, 216, 216);
+    color: rgb(34, 34, 34);
+}
+
+.list-group-item :first-child {
+    margin-right: 0%;
+}
