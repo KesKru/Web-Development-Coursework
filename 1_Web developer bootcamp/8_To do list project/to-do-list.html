@@ -10,8 +10,20 @@
     <!-- ------------------------------------------------------------------------ -->
     <!-- Bootstrap material design CSS -->
 
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous"> -->
+
+    <!-- ------------------------------------------------------------------------ -->
+    <!-- Bootstrap material design CSS -->
+
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
         integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <!-- ------------------------------------------------------------------------ -->
+    <!-- font awesome -->
+
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0"
+        crossorigin="anonymous"></script>
 
     <!-- ------------------------------------------------------------------------ -->
     <!-- custom css -->
@@ -28,11 +40,12 @@
             <div class="col-xs-12 col-sm-9 col-lg-6">
                 <h1 class="text-center pb-4">To do list</h1>
                 <ul class="list-group">
-                    <li class="list-group-item add-item" id="a">
-                        <input type="text" class="form-control" placeholder="Add new item">
+                    <li class="list-group-item add-item">
+                        <input type="text" class="form-control add-item" placeholder="Type in the new item and press enter"
+                            onclick="this.placeholder='' " onblur="this.placeholder='Type in the new item and press enter'"></input>
                     </li>
-                    <li class="list-group-item item">2</li>
-                    <li class="list-group-item item">3</li>
+                    <li class="list-group-item item"><span class="delete">X </span>Item-1</li>
+                    <li class="list-group-item item"><span class="delete">X </span>Item-2</li>
                 </ul>
             </div>
         </div>
@@ -72,16 +85,27 @@
 
 
 
+    <!-- ------------------------------------------------------------------------ -->
+    <!-- Bootstrap -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script> -->
 
     <!-- ------------------------------------------------------------------------ -->
     <!-- Bootstrap material design -->
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
         crossorigin="anonymous"></script>
+
     <!-- <script>
         $(document).ready(function () {
             $('body').bootstrapMaterialDesign();

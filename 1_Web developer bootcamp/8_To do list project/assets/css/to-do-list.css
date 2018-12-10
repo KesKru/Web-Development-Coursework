@@ -1,26 +1,59 @@
-
-html, body, .container, .row {
+html,
+body,
+.container,
+.row {
     height: 100%;
 }
 
 .list-group-item {
     background: rgb(240, 240, 240);
     color: rgb(34, 34, 34);
-    border-bottom: 1px solid rgb(216, 216, 216);
+    border-bottom: 1px solid rgb(221, 221, 221);
 }
 
-
-
-.list-group-item:nth-last-of-type(1) {
-    border-bottom: 0;
-
-}
-
-.list-group-item:hover {
-    background: rgb(216, 216, 216);
-    color: rgb(34, 34, 34);
-}
 
 .list-group-item :first-child {
     margin-right: 0%;
+}
+
+.list-group-item:nth-last-of-type(1) {
+    border-bottom: 0;
+    
+}
+
+.list-group-item:hover {
+    background: rgb(221, 221, 221);
+}
+
+
+.form-control {
+    display: table-cell;
+    width: 100%;
+    padding: 0rem;
+    background-image: none;
+}
+
+
+img {
+    /* object-fit: contain; */
+    width: 20px;
+    height: 20px;
+}
+
+input {
+    width: 500px;
+    padding-right: 1px;
+}
+
+.item {
+
+}
+
+.completedItem {
+    color: grey;
+    text-decoration: line-through !important;
+}
+
+span {
+    padding-right: 10px;
 }
