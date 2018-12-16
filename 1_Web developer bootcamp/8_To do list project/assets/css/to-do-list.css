@@ -35,17 +35,30 @@ body,
 
 
 img {
-    /* object-fit: contain; */
-    width: 20px;
-    height: 20px;
+    /* object-fit: cover */
+    width: 50px;
+    height: 50px;
+    background: none;
+    padding: 15px;
+    transition: 0.5s ease;
+    opacity: 0;
+
+    
+}
+
+.item:hover img {
+    visibility: visible;
+    opacity: 100;
+
 }
 
 input {
-    width: 500px;
-    padding-right: 1px;
+    /* width: 500px; */
+    /* padding-right: 1px; */
 }
 
 .item {
+    padding: 0 0 0 15px;
 
 }
 
@@ -54,6 +67,20 @@ input {
     text-decoration: line-through !important;
 }
 
-span {
+/* span {
     padding-right: 10px;
+} */
+
+.delete {
+     margin-left: auto;
+}
+
+
+li {
+    height: 50px;
+}
+
+p {
+    padding: 0;
+    margin: 0;
 }

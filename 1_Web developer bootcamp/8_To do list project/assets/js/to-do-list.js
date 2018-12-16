@@ -2,12 +2,13 @@
 
 let ul = $("ul");
 let newItem = $("input.add-item");
+let firstLi = $("li.add-item");
 let item = $(".item");
 let del = $(".delete");
 
 
-console.log(newItem);
-console.log(item);
+// console.log(newItem);
+// console.log(item);
 
 
 /* ---------------------- Add Text decorators ------------------------ */
@@ -32,7 +33,7 @@ console.log(item);
 //     e.stopPropagation();
 // });
 
-ul.on("click","li", function (e) {
+ul.on("click", ".item", function (e) {
     $(this).toggleClass("completedItem");
     e.stopPropagation();
 });
@@ -46,7 +47,7 @@ ul.on("click","li", function (e) {
 //     e.stopPropagation();
 // });
 
-del.click(function (e) {
+ul.on("click", ".delete", function (e) {
     $(this).parent().fadeOut(500, function () {
         $(this).remove();
     });
@@ -54,11 +55,35 @@ del.click(function (e) {
 });
 
 
+
+// del.click(function (e) {
+//     $(this).parent().fadeOut(500, function () {
+//         $(this).remove();
+//     });
+//     e.stopPropagation();
+// });
+
+
 /* del.click(function (event) {
     $(this).parent().fadeOut();
     event.stopPropagation();
 });
  */
+
+/* ----------------------  Hide/unhide delete button ------------------------ */
+
+
+// del.css({
+//     visibility: "visible",
+// });
+
+// item.on("hover", function (e) {
+//     console.log("!!")
+//     del.css({
+//         visibility: "visible",
+//     });
+//     e.stopPropagation();
+// });
 
 
 /* ---------------------- New to do ------------------------ */
@@ -68,11 +93,25 @@ newItem.keypress(function (e) {
     if (e.which === 13) {
         let x = $(this).val();
         $(this).val("");
-        ul.append("<li>" + x + "</li>");
-        console.log("OK!");
+        // console.log(y);
+        firstLi.after('<li class="list-group-item item"><p class="li-text">' + x + '</p> <span class="delete"><img src="assets/icons/trash-alt.svg" alt=""> </span> </li>');
     }
+
     e.stopPropagation();
 });
+
+
+// newItem.keypress(function (e) {
+//     if (e.which === 13) {
+//         let x = $(this).val();
+//         let y = item.first().clone(true);
+//         // y.text(x)
+//         console.log(x);
+
+//         firstLi.after(y);
+//     }
+//     e.stopPropagation();
+// });
 
 
 
