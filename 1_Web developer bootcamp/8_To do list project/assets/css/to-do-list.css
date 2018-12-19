@@ -46,7 +46,7 @@ img {
     
 }
 
-.item:hover img {
+.item:hover img { 
     visibility: visible;
     opacity: 100;
 
