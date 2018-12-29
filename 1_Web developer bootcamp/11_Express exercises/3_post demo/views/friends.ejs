@@ -1,0 +1,10 @@
+<ul>
+<% for (let i = 0; i < friends.length; i++) { %>
+    <li><%= friends[i]%></li>
+<% } %>
+</ul>
+
+<form action="/friends" method="POST">
+    <input type="text" name="newFriend">
+     <button type="">submit</button>
+</form>

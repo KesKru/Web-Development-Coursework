@@ -1,0 +1,7 @@
+<h1>Results for "<%=search%>"</h1>
+
+<ul>
+<% for (let i = 0; i < results["Search"].length; i++) { %>
+    <li><%= results["Search"][i]["Title"] %></li>
+<% } %>
+</ul>

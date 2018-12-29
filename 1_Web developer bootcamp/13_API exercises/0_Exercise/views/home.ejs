@@ -1,0 +1,14 @@
+<h1>This is a home page</h1>
+
+
+<ul>
+    <% for (let i = 0; i < data.length; i++) { %>
+        <li><strong><%= data[i].title %></strong> 
+        <ul>
+            <li>
+                <%= data[i].title %>
+            </li>
+        </ul>
+        </li>   
+    <% } %>
+</ul>
