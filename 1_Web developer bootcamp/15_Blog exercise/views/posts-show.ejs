@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+
+<div class="ui container top-offset">
+  <div class="ui grid centered">
+    <div class="fourteen wide column">
+      <div class="ui fluid card">
+        <div class="image">
+          <img src="<%= postById["image"] %>">
+        </div>
+        <div class="content">
+          <a class="ui button right floated" href="/posts">Back</a>
+          <a class="ui button right floated" href="/posts/<%=postById["_id"]%>/edit">Edit</a>
+          <form action="/posts/<%=postById["_id"]%>?_method=DELETE" method="POST">
+              <button type="submit" class="ui button right floated">Delete</button type="submit">
+          </form>
+          <a class="header">
+            <%=postById["author"] %></a>
+          <div class="meta">
+            <span class="date"><%=postById["date"].toLocaleString() %></span>
+          </div>
+          <div class="ui divider"></div>
+          <div class="description">
+            <%=postById["body"] %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% include partials/footer %>

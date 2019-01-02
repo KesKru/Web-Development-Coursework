@@ -1,0 +1,30 @@
+<% include partials/header %>
+
+
+<div class="ui container top-offset">
+  <div class="ui grid centered">
+    <div class="ten wide column">
+      <% for (let i = allPosts.length-1; i >= 0; i--) { %>
+      <div class="ui fluid card">
+        <div class="image">
+          <img src="<%= allPosts[i]["image"] %>">
+        </div>
+        <div class="content">
+          <a class="ui button right floated" href="/posts/<%=allPosts[i]["_id"]%>">Read more</a>
+          <a class="header">
+            <%=allPosts[i]["author"] %></a>
+          <div class="meta">
+            <span class="date"><%=allPosts[i]["date"].toLocaleString() %></span>
+          </div>
+          <div class="description">
+            <%=allPosts[i]["body"].substring(0, 150) %> ...
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+<% include partials/footer %>
