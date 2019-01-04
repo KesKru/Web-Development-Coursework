@@ -20,7 +20,7 @@ let postSchema = new mongoose.Schema({
     image: String,
     body: String,
     date: { type: Date, default: Date.now }
-
+    //incoming form fileds should be named acordingly and grouped in order to just pass in the object when creating or editing.
 });
 let Post = mongoose.model("Post", postSchema);
 
@@ -88,11 +88,7 @@ app.get("/posts/new", function (req, res) {
 
 // CREATE | /dogs | POST | Create new dog, then redirect somewhere.
 app.post("/posts", function (req, res) {
-    Post.create({
-        author: req.body.blogPost.title,
-        image: req.body.blogPost.image,
-        body: req.body.blogPost.body
-    },
+    Post.create(req.body.blogPost,
         function (err, post) {
             if (err) {
                 console.log(err);
@@ -133,11 +129,7 @@ app.get("/posts/:id/edit", function (req, res) {
 
 // UPDATE | /dogs/:id | PUT | Update specific dog, then redirect somewhere.
 app.put("/posts/:id", function (req, res) {
-    Post.findByIdAndUpdate(req.params.id, {
-        author: req.body.blogPost.title,
-        image: req.body.blogPost.image,
-        body: req.body.blogPost.body
-    },
+    Post.findByIdAndUpdate(req.params.id, req.body.blogPost,
         function (err, updatedBlog) {
             if (err) {
                 console.log(err);
