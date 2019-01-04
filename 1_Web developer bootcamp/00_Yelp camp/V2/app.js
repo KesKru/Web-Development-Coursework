@@ -19,13 +19,15 @@ let campgroundSchema = new mongoose.Schema({
 });
 let Campground = mongoose.model("Campground", campgroundSchema);
 
-// let campgroundsSeed = [
-//     { name: "Camp-1", img: "https://farm1.staticflickr.com/7669/16417844773_f6b00d46db_o.jpg" },
-//     { name: "Camp-2", img: "https://farm8.staticflickr.com/6164/6233656772_7f91862104_o.jpg" },
-//     { name: "Camp-3", img: "https://farm6.staticflickr.com/5294/5433932379_6849672342_b.jpg" },
-//     { name: "Camp-4", img: "https://farm1.staticflickr.com/2163/2398522822_0a29a4c096_o.jpg" },
-//     { name: "Camp-5", img: "https://c4.staticflickr.com/8/7523/16103236218_a9fef9d0c2_o.jpg" },
-// ];
+let campgroundsSeed = [
+    { name: "Camp-1", img: "https://farm1.staticflickr.com/7669/16417844773_f6b00d46db_o.jpg" },
+    { name: "Camp-2", img: "https://farm8.staticflickr.com/6164/6233656772_7f91862104_o.jpg" },
+    { name: "Camp-3", img: "https://farm6.staticflickr.com/5294/5433932379_6849672342_b.jpg" },
+    { name: "Camp-4", img: "https://farm1.staticflickr.com/2163/2398522822_0a29a4c096_o.jpg" },
+    { name: "Camp-5", img: "https://c4.staticflickr.com/8/7523/16103236218_a9fef9d0c2_o.jpg" },
+];
+
+/* <-------------------------Seed data--------------------------> */
 
 // for (let i = 0; i < campgroundsSeed.length; i++) {
 //     Campground.create({
@@ -42,22 +44,6 @@ let Campground = mongoose.model("Campground", campgroundSchema);
 //             }
 //         });
 // }
-
-
-// Campground.create({
-//     name: "Camp-1",
-//     image: "https://farm1.staticflickr.com/7669/16417844773_f6b00d46db_o.jpg"
-// },
-//     function (err, campground) {
-//         if (err) {
-//             console.log("ERRORRR !!");
-//             console.log(err);
-//         } else {
-//             console.log("All good !!");
-//             console.log(campground);
-//         }
-//     });
-
 
 /* <-------------------------Routes--------------------------> */
 
@@ -113,37 +99,6 @@ app.get("/campgrounds/:id", function (req, res) {
             }
         });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.get("/results", function (req, res) {
-//     let search = req.query.search;
-//     request("http://www.omdbapi.com/?s="+search+"&apikey=e3737c2d", function (error, response, body) {
-//         if (!error && response.statusCode == 200 ) {
-//             results = JSON.parse(body);
-//             res.render("results", {results:results, search:search});
-//         }
-//     });
-// });
-
 
 /* <---------------------------------------------------> */
 
