@@ -24,7 +24,7 @@ mongoose.connect("mongodb://localhost/yelp_camp_v3", {
 
 /* <-------------------------Seed database--------------------------> */
 
-// seedDB();
+seedDB();
 
 /* <-------------------------Routes--------------------------> */
 // INDEX   |  /dogs          |  GET     | List all dogs.
@@ -44,7 +44,9 @@ app.get("/", function (req, res) {
 });
 
 // <--------------------------
-
+///////////////////////
+// CAMPGROUNDS
+///////////////////////
 //INDEX - display all campgrounds
 app.get("/campgrounds", function (req, res) {
     Campground.find({},
@@ -66,12 +68,7 @@ app.get("/campgrounds/new", function (req, res) {
 
 //CREATE - add new campground to database
 app.post("/campgrounds", function (req, res) {
-    let campgroundName = req.body.campgroundName;
-    let url = req.body.url;
-    Campground.create({
-            name: campgroundName,
-            image: url
-        },
+    Campground.create(req.body.newCampground,
             function (err, campground) {
                 if (err) {
                     console.log(err);
@@ -97,6 +94,10 @@ app.get("/campgrounds/:id", function (req, res) {
 });
 
 /* <---------------------------------------------------> */
+
+///////////////////////
+// CAMPGROUNDS
+///////////////////////
 
 app.listen(3000, function () {
     console.log("Server has started !");

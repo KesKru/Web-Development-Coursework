@@ -16,12 +16,12 @@ var data = [
         description: loremIpsum({count: 55 , units: 'words'})
     },
     {
-        name: "Desert Mesa",
+        name: "Mountain Horn",
         image: "https://farm6.staticflickr.com/5294/5433932379_6849672342_b.jpg",
         description: loremIpsum({count: 55 , units: 'words'})
     },
     {
-        name: "Desert Mesa",
+        name: "Black Forrest",
         image: "https://farm1.staticflickr.com/2163/2398522822_0a29a4c096_o.jpg",
         description: loremIpsum({count: 55 , units: 'words'})
     },
