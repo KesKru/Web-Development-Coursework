@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+
+
+<div class="container top-offset">
+    <div class="row">
+        <div class="col p-0">
+            <div class="card m-3">
+                <img class="card-img-top img-show" src="<%= oneCampground["image"] %>" alt="Card image">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%=oneCampground["name"] %>
+                    </h5>
+                    <p class="card-text align-text">
+                        <%= oneCampground["description"] %>
+                    </p>
+                    <a class="btn btn-primary" href="/campgrounds">Back</a>
+                    <a class="btn btn-primary float-right" href="/campgrounds/<%= oneCampground["_id"] %>/comments/new">Leave a comment</a>
+                </div>
+                <hr>
+                <div class="card-body">
+                    <% for (let i = 0; i < oneCampground.comments.length; i++) { %>
+                    <h5>
+                        <%= oneCampground["comments"][i]["author"] %>
+                    </h5>
+                    <p class="card-text">
+                        <%= oneCampground["comments"][i]["text"]%>
+                    </p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
