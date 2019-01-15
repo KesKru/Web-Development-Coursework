@@ -1,0 +1,48 @@
+<% include ../partials/header %>
+
+<div class="container top-offset">
+    <div class="row">
+        <div class="col p-0">
+            <div class="card m-3">
+                <img class="card-img-top img-show" src="<%=campgroundToShow.image%>" alt="Card image">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%=campgroundToShow.name%>
+                    </h5>
+                    <p class="card-text align-text">
+                        <%=campgroundToShow.description%>
+                    </p>
+                    <a class="btn btn-primary" href="/campgrounds">Back</a>
+                    <a class="btn btn-primary float-right" href="/campgrounds/<%=campgroundToShow._id%>/comments/new">Leave
+                        a comment</a>
+                    <% if(currentUser && campgroundToShow.author.id.equals(currentUser._id)){ %>
+                    <form class="inline-form" action="/campgrounds/<%=campgroundToShow._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-primary float-right" type="submit">Delete</button>
+                    </form>
+                    <a class="btn btn-primary float-right" href="/campgrounds/<%=campgroundToShow._id%>/edit">Edit</a>
+                    <% } %>
+                </div>
+                <hr>
+                <div class="card-body">
+                    <% for (let i = 0; i < campgroundToShow.comments.length; i++) { %>
+                    <h5>
+                        <%=campgroundToShow.comments[i].author.username%>
+                        <% if(currentUser && campgroundToShow.comments[i].author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-primary float-right" href="/campgrounds/<%=campgroundToShow._id%>/comments/<%=campgroundToShow.comments[i]._id%>/edit">Edit</a>
+                        <form class="inline-form" action="/campgrounds/<%=campgroundToShow._id%>/comments/<%=campgroundToShow.comments[i]._id%>?_method=DELETE"
+                            method="POST">
+                            <button class="btn btn-primary float-right" type="submit">Delete</button>
+                        </form>
+                        <% } %>
+                    </h5>
+                    <p class="card-text">
+                        <%=campgroundToShow.comments[i].text%>
+                    </p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
