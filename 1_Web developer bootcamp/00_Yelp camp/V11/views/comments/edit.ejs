@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+<div class="container top-offset">
+    <div class="row">
+        <div class="col p-0">
+            <div class="card m-3">
+                <div class="card-body">
+                    <h5 class="card-title">Edit comment</h5>
+                    <form action="/campgrounds/<%=campgroundId%>/comments/<%=commentToEdit._id%>?_method=PUT"
+                        method="POST">
+                        <div class="form-group">
+                            <textarea rows="5" cols="1" class="form-control" name="editedComment[text]" placeholder="Comment"><%=commentToEdit.text%></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a class="btn btn-primary" href="/campgrounds">Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

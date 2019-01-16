@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container top-offset">
+    <div class="jumbotron box-shadow">
+        <h1 class="display-3 mb-4 mt-2">Campgrounds</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+            featured content or information.</p>
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/campgrounds/new" role="button">Add new campground</a>
+        </p>
+    </div>
+    <div class="row">
+        <% for (let i = 0; i < campgroundsToIndex.length; i++) { %>
+        <div class="col-sm-6 col-lg-4 p-0">
+            <a href="/campgrounds/<%=campgroundsToIndex[i]._id%>" class="text-dark">
+                <div class="card m-3">
+                    <img class="card-img-top img-index" src="<%=campgroundsToIndex[i].image%>" alt="Card image">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=campgroundsToIndex[i].name%>
+                        </h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+<% include ../partials/footer %>
