@@ -1,21 +1,33 @@
 /* <--------------------------Required imports-------------------------> */
 
 ////PACKAGES
+//Including and initiating express.
 const express = require("express");
 const app = express();
+//body-parser parses req.body string to javascript object.
 const bodyParser = require("body-parser");
+//request lets you make http request from javascript code.
 const request = require("request");
+//HTML forms support only GET and POST requests by default, method-override lets override POST and use it as PUT or DELETE.
 const methodOverride = require("method-override");
+//Package for one-off on-screen mesages
 const flash = require("connect-flash");
+//Helps interact with mongoDB
 const mongoose = require("mongoose");
+//Privides cookie functionality and creates the session object in req object
 const expressSession = require("express-session");
+//Package to handle authentication
 const passport = require("passport");
+//Package to handle local authentication strategy
 const passportLocal = require("passport-local");
+//Package to handle local authentication interactions with mongoDB
 const passportLocalMongoose = require("passport-local-mongoose");
+
 ////MODULES
 const Campground = require("./models/campground");
 const Comment = require("./models/comment");
 const User = require("./models/user");
+
 ////ROUTES
 const indexRoutes = require("./routes/index");
 const campgroundRoutes = require("./routes/campgrounds");
@@ -32,7 +44,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 // Method override config. Passed string is the one that needs to be used when submiting the form
 app.use(methodOverride("_method"));
-// Package for on-screen mesages
+// Initiate connect-flash
 app.use(flash());
 
 ////AUTHENTICATION CONFIG////
@@ -41,7 +53,7 @@ app.use(expressSession({
     secret: "this text is used to decode and encode the sessions",
     resave: false,
     saveUninitialized: false
-}))
+}));
 // Passport setup
 app.use(passport.initialize());
 app.use(passport.session());
@@ -75,8 +87,6 @@ app.use(campgroundRoutes);
 app.use(commentRoutes);
 app.use(authRoutes);
 // if using prefixes to shorten paths in route files( app.use("/campgrounds",indexRoutes) ), need to do this to merge route params router = express.Router({mergeParams: true}).
-
-
 
 /* <-------------------------Seed database--------------------------> */
 

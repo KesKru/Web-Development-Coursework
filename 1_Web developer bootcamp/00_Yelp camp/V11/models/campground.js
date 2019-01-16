@@ -17,4 +17,5 @@ let campgroundSchema = new mongoose.Schema({
     }]
 });
 
+//Compiling to model on export. mongoose.model("Singular form to name collecftion in db( colection name in db will be pluralized", SchemaThatIsUsedToMakeModel);
 module.exports = mongoose.model("Campground", campgroundSchema);

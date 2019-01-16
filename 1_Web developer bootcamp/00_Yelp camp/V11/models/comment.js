@@ -11,4 +11,5 @@ let commentSchema = new mongoose.Schema({
     text: String
 });
 
+//Compiling to model on export. mongoose.model("Singular form to name collecftion in db( colection name in db will be pluralized", SchemaThatIsUsedToMakeModel);
 module.exports = mongoose.model("Comment", commentSchema);
