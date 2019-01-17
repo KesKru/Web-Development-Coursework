@@ -1,25 +1,60 @@
-let x;
-let arr = [1, 2, 3, 4, 5, 6];
+////-------------------Basic synchronous callbacks---------------------////
 
-
-//Using for loop
-function double(arr) {
-    x = [];
-    for (let i = 0; i < arr.length; i++) {
-        x.push(arr[i] * 2);
-    }
-    return x;
+//Defining a simple function
+function greeting(name) {
+    alert('Hello ' + name);
 }
 
-double(arr);
+//Defining a function that takes anoter function(callback) as an argument and runes it in its body. Thsis is known as a higher order function.
+function processUserInput(callback) {
+    let name2 = prompt('Please enter your name.');
+    callback(name2);
+}
 
-//Using for each
-array.forEach(function(item){
-    
-});
+//executing 
+// processUserInput(greeting);
 
+//--------------Some examples---------------//
 
+//Duplicate code without callbakcs
 
+function sendMessageConsole(message) {
+    console.log(message);
+}
 
+function sendMessageAlert(message) {
+    alert(message);
+}
 
-console.log(x);
+function sendMessageConfirm(message) {
+    confirm(message);
+}
+
+//Higher order function to pass in any of functions declared above
+
+function sendMessage(message, callback) {
+    callback(message);
+}
+
+// sendMessage("demo message", sendMessageConfirm);
+
+//------------------------/
+
+//defining higher ordder function
+
+function greet(name, formatter) {
+    console.log("Hello " + formatter(name))
+}
+
+//Pasing in declarared function by name
+function upperCaseName(name) {
+    return name.toUpperCase();
+ }
+
+greet("Tom", upperCaseName);
+
+//Passing anonymous function as a callback without defining and naming it first
+greet("Tom", function(name) {
+    return name.toUpperCase();
+ });
+
