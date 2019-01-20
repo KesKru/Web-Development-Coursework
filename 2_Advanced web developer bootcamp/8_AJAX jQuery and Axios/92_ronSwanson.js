@@ -3,22 +3,37 @@
 let xhrText = document.querySelector("#XHR-quote");
 let xhrBtn = document.querySelector("#XHR-button");
 
-
-
 xhrBtn.addEventListener("click", function () {
     let XHRrequest = new XMLHttpRequest();
-    XHRrequest.onreadystatechange = function () {
-        if (XHRrequest.readyState == 4) {
-            if (XHRrequest.status == 200) {
+    XHRrequest.open("GET", "https://ron-swanson-quotes.herokuapp.com/v2/quotes", true);
+    XHRrequest.onload = function () {
+            if (XHRrequest.status >= 200 && XHRrequest.status < 400) {
                 xhrText.innerText = JSON.parse(XHRrequest.responseText)[0];
             } else {
-                console.log("There was an error !")
+                console.log("We reached the server, but it returned an error")
             }
-        }
     }
-    XHRrequest.open("GET", "https://ron-swanson-quotes.herokuapp.com/v2/quotes");
+    XHRrequest.onerror = function() {
+        console.log("There was a connection error of some sort !")
+      };
     XHRrequest.send();
 });
+
+////COl STEELE TUTORIAL EXAMPLE
+// xhrBtn.addEventListener("click", function () {
+//     let XHRrequest = new XMLHttpRequest();
+//     XHRrequest.onreadystatechange = function () {
+//         if (XHRrequest.readyState == 4) {
+//             if (XHRrequest.status == 200) {
+//                 xhrText.innerText = JSON.parse(XHRrequest.responseText)[0];
+//             } else {
+//                 console.log("There was an error !")
+//             }
+//         }
+//     }
+//     XHRrequest.open("GET", "https://ron-swanson-quotes.herokuapp.com/v2/quotes");
+//     XHRrequest.send();
+// });
 
 
 ////------------------Making request with Fetch---------------------////
