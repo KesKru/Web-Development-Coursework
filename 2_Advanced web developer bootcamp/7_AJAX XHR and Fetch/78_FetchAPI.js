@@ -39,23 +39,21 @@ let btn = document.querySelector("#btn");
 
 btn.addEventListener("click", function () {
     fetch("https://api.github.com/users/colts")
-        // handling errors if request is not ok, if all good passing data to next .then
-        .then(handleErrors)
+        // handling errors if response is not ok, if all good passing data to next .then        
+        .then(function (response) {
+            if (!response.ok) {
+                throw Error(response.status);
+            } else {
+                return response;
+            }
+        })
         .then(function (response) {
             console.log("All good !");
             console.log(response);
         })
-        // throwError will be equal to whatever to whatever is in: throw Error("Custom error !!")
+        // throwError will be equal to whatever to whatever is in: throw Error("Custom error !!"). By default .catch checks only request errors (no internet etc.), so we have to check for response errors (404 not found etc) manualy 
         .catch(function (throwError) {
             console.log(throwError);
         })
 });
 
-// handling errors in separate function and then passing it to .then
-function handleErrors(response) {
-    if (!response.ok) {
-        throw Error(response.status);
-    } else {
-        return response;
-    }
-}
