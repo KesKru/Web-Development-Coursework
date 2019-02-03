@@ -31,6 +31,10 @@ rusty.bark()
 fido.bark()
 // Fido just barked !
 
+// 4. adds __proto__ (dunder proto) property on new object. This property linkes to the to prototype property on the constructor function.
+// Dog.prototype === rusty.__proto__ === fido.__proto__
+// Everything added Dog.prototype will be accesible trought .__proto__ property on all objects creasteed from that constructor function.
+
 // -----------------------------------------------
 
 // Reducing code duplication
@@ -58,3 +62,12 @@ function MotorcycleRefactored(make, model, year) {
     Car.apply(this, arguments);
     this.numWeels = 2;
 }
+
+// -----------------------------------------------
+// INHERITANCE -- pasing objects and methods from one class to another. 
+
+// if you want to assign methods from one Constructor.prototype to Constructor2.prototype do this Object.create
+// Constructor.prototype = Constructor2.prototype - this is bad , it will simply create a reference
+// Constructor.prototype = Object.create(Constructor2.prototype) - this is good it will create new independant object based on the first one.
+
+// after doing that you need to reset Constructor2.prototype.constructor reference to be a new constructor function, becouse it got overwriten when we used Object.create. Constructor2.prototype.constructor = Constructor2.
