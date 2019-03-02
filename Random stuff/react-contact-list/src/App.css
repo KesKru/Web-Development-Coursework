@@ -3,3 +3,21 @@
   padding: 20px;
   background: rgb(245, 245, 245);
 }
+
+.fa-angle-down {
+  font-size: 1.8rem;
+  transform: translateY(0.25rem);
+  padding-left: 0.25em;
+  cursor: pointer;
+}
+
+.fa-times {
+  float: right;
+  font-size: 1.5rem;
+  transform: translateY(0.25rem);
+  color: red;
+}
+
+.fa-times:hover {
+  cursor: pointer;
+}
