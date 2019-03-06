@@ -3,6 +3,16 @@
   padding: 20px;
   background: rgb(245, 245, 245);
 }
+.new-contact {
+  text-align: center;
+  margin-top: 20px;
+  /* background: rgb(245, 245, 245); */
+}
+
+input, label {
+  width: 100%;
+  text-align: left;
+}
 
 .fa-angle-down {
   font-size: 1.8rem;

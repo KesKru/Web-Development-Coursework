@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid';
 
 const Context = React.createContext();
 
@@ -21,6 +22,11 @@ const Reducer = (state, action) => {
           return contact;
         })
       }
+    case 'ADD_CONTACT':
+      return {
+        ...state,
+        contacts: [action.payload, ...state.contacts]
+      }
     default: return state;
   };
 }
@@ -29,29 +35,29 @@ export class Provider extends Component {
   state = {
     contacts: [
       {
-        id: 1,
+        id: uuid(),
         name: 'Jonhn Doe',
         email: 'Jonhn@gmail.com',
-        number: '555 - 555 - 555',
+        number: '555-555-555',
         showContactInfo: true
       },
       {
-        id: 2,
+        id: uuid(),
         name: 'Mary Jane',
         email: 'Mary@gmail.com',
-        number: '333 - 333 - 333',
+        number: '333-333-333',
         showContactInfo: true
       },
       {
-        id: 3,
+        id: uuid(),
         name: 'Kyle Kent',
         email: 'Kyle@gmail.com',
-        number: '888 - 888 - 888',
+        number: '888-888-888',
         showContactInfo: true
       }
     ],
-    dispatch: action => {
-      this.setState(state => Reducer(state, action))
+    dispatch: (action) => {
+      this.setState((state) => Reducer(state, action))
     }
   }
 

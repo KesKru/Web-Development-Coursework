@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Consumer } from '../context';
+import { Consumer } from '../../context';
 import PropTypes from 'prop-types';
 
 class Contact extends Component {
@@ -21,7 +21,7 @@ class Contact extends Component {
     const {id, name, number, email, showContactInfo } = this.props.contact;
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { dispatch } = value;
           return (
             <div className='card mt-3'>
