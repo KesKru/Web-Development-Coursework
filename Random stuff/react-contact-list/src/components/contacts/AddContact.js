@@ -53,6 +53,8 @@ class AddContact extends Component {
       number: '',
       errors: {}
     })
+
+    this.props.history.push('/');
   }
 
   onChange = (e) => {

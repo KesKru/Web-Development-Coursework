@@ -3,6 +3,12 @@ import { Consumer } from '../../context';
 import Contact from './Contact';
 
 class Contacts extends Component {
+  componentDidUpdate(){
+    console.log('componentDidUpdate...')
+  }
+  componentWillUpdate(){
+    console.log('componentWillUpdate...')
+  }
   render() {
     return (
       <Consumer>
