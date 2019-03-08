@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import uuid from 'uuid';
+// import uuid from 'uuid';
+import axios from 'axios';
 
 const Context = React.createContext();
+
+//----------------------REDUCER----------------------//
 
 const Reducer = (state, action) => {
   switch (action.type) {
@@ -31,34 +34,19 @@ const Reducer = (state, action) => {
   };
 }
 
+//----------------------COMPONENT----------------------//
+
 export class Provider extends Component {
   state = {
-    contacts: [
-      {
-        id: uuid(),
-        name: 'Jonhn Doe',
-        email: 'Jonhn@gmail.com',
-        number: '555-555-555',
-        showContactInfo: true
-      },
-      {
-        id: uuid(),
-        name: 'Mary Jane',
-        email: 'Mary@gmail.com',
-        number: '333-333-333',
-        showContactInfo: true
-      },
-      {
-        id: uuid(),
-        name: 'Kyle Kent',
-        email: 'Kyle@gmail.com',
-        number: '888-888-888',
-        showContactInfo: true
-      }
-    ],
+    contacts: [],
     dispatch: (action) => {
       this.setState((state) => Reducer(state, action))
     }
+  }
+
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then((res) => this.setState({ contacts: res.data }))
   }
 
   render() {
@@ -72,40 +60,16 @@ export class Provider extends Component {
 
 export const Consumer = Context.Consumer;
 
-// showHideContact = (id, e) => {
-//     const newContacts = this.state.contacts;
-//     newContacts.map((contact) => {
-//       if (contact.id === id) {
-//         contact.showContactInfo = !contact.showContactInfo
-//       }
-//       return newContacts;
-//     })
-//     this.setState({
-//       contacts: newContacts
-//     });
-//   };
+//----------------------Using Fetch----------------------//
 
-//   deleteContact = (id, e) => {
-//     const newContacts = this.state.contacts.filter(contact => contact.id !== id)
-//     this.setState({
-//       contacts: newContacts
-//     });
-//   };
-
-// const Reducer = (state, action) => {
-//   switch (action.type) {
-//     case 'DELETE_CONTACT':
-//       console.log(state)
-//       return console.log(state.contacts = state.contacts.filter(
-//         contact => contact.id !== action.payload))
-//     case 'HIDE_CONTACT':
-//       console.log(state)
-//       return console.log(state.contacts = state.contacts.map((contact) => {
-//         if (contact.id === action.payload) {
-//           contact.showContactInfo = !contact.showContactInfo
-//         }
-//         return state;
-//       }))
-//     default: return state;
-//   };
+// function handleErrors(res) {
+//   if (!res.ok) {
+//       throw Error(res.statusText);
+//   }
+//   return res.json();
 // }
+
+// fetch("http://httpstat.us/500")
+//     .then(handleErrors)
+//     .then(response => console.log("ok") )
+//     .catch(error => console.log(error) );

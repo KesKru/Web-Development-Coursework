@@ -5,8 +5,11 @@
 .header *{
   color: rgb(34, 34, 34);
   background: rgb(245, 245, 245) !important;
+  font-size: 1.5rem;
 }
-
+.nav-link{
+  padding-left: 1rem !important;
+}
 .new-contact {
   text-align: center;
   margin-top: 20px;
@@ -30,6 +33,13 @@ input, label {
   font-size: 1.5rem;
   transform: translateY(0.25rem);
   color: red;
+}
+.fa-pen {
+  float: right;
+  font-size: 1.05rem;
+  padding-right: 0.7em;
+  transform: translateY(0.5rem);
+  color: #212529;
 }
 
 .fa-times:hover {
