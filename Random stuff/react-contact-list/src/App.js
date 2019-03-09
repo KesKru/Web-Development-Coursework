@@ -16,7 +16,7 @@ class App extends Component {
       <Provider>
         <Router>
           <div className="App">
-            <Header branding='Cantact list app' />
+            <Header branding='Contact list app' />
             <div className='container'>
               <Switch>
                 <Route 
