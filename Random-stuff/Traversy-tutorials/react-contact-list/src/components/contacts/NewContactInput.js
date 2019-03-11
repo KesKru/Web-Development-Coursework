@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 function NewContactInput(props) {
-  const {
-    label, type, name, placeholder, value, onChange, error,
-  } = props;
+  const { label, type, name, placeholder, value, onChange, error } = props;
+
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}

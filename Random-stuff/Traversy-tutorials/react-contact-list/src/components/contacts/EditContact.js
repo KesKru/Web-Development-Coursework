@@ -4,25 +4,23 @@ import { Consumer } from '../../context';
 import NewContactInput from './NewContactInput';
 // import uuid from 'uuid';
 
-
 class EditContact extends Component {
   state = {
     name: '',
     email: '',
     phone: '',
-    errors: {},
-  }
+    errors: {}
+  };
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((res) => {
-        this.setState({
-          name: res.data.name,
-          email: res.data.email,
-          phone: res.data.phone,
-        });
+    axios.get(`https://jsonplaceholder.typicode.com/users/${id}`).then((res) => {
+      this.setState({
+        name: res.data.name,
+        email: res.data.email,
+        phone: res.data.phone
       });
+    });
   }
 
   onSubmit = (dispatch, e) => {
@@ -46,37 +44,34 @@ class EditContact extends Component {
     const updateContact = {
       name,
       email,
-      phone,
+      phone
     };
 
     const { id } = this.props.match.params;
 
-    axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, updateContact)
-      .then((res) => {
-        dispatch({
-          type: 'EDIT_CONTACT',
-          payload: res.data,
-        });
+    axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, updateContact).then((res) => {
+      dispatch({
+        type: 'EDIT_CONTACT',
+        payload: res.data
       });
+    });
 
     this.setState({
       name: '',
       email: '',
       phone: '',
-      errors: {},
+      errors: {}
     });
 
     this.props.history.push('/');
-  }
+  };
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
 
   render() {
-    const {
-      name, email, phone, errors,
-    } = this.state;
+    const { name, email, phone, errors } = this.state;
     return (
       <Consumer>
         {(value) => {
@@ -116,11 +111,7 @@ class EditContact extends Component {
                     onChange={this.onChange}
                     error={errors.phone}
                   />
-                  <input
-                    type="submit"
-                    className="btn btn-light btn-block"
-                    value="Edit contact"
-                  />
+                  <input type="submit" className="btn btn-light btn-block" value="Edit contact" />
                 </form>
               </div>
             </div>
