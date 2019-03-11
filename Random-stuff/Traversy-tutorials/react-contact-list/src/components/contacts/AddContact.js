@@ -4,7 +4,7 @@ import NewContactInput from '././NewContactInput';
 import axios from 'axios';
 // import uuid from 'uuid';
 
-class AddContact extends Component {
+export default class AddContact extends Component {
 	state = {
 		name: '',
 		email: '',
@@ -110,5 +110,3 @@ class AddContact extends Component {
 		);
 	}
 }
-
-export default AddContact;
