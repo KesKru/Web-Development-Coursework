@@ -7,8 +7,8 @@ class Contact extends Component {
     showContactInfo: false
   };
 
-  onDeleteClick = id => {
-    //// DELETE CONTACT ////
+  onDeleteClick = (id) => {
+    // // DELETE CONTACT ////
   };
 
   render() {

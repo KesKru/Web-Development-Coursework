@@ -38,7 +38,7 @@ class EditContact extends Component {
 
     const { id } = this.props.match.params;
 
-    //// UPDATE CONTACT ////
+    // // UPDATE CONTACT ////
 
     // Clear State
     this.setState({
@@ -51,7 +51,7 @@ class EditContact extends Component {
     this.props.history.push('/');
   };
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     const { name, email, phone, errors } = this.state;
@@ -86,11 +86,7 @@ class EditContact extends Component {
               onChange={this.onChange}
               error={errors.phone}
             />
-            <input
-              type="submit"
-              value="Update Contact"
-              className="btn btn-light btn-block"
-            />
+            <input type="submit" value="Update Contact" className="btn btn-light btn-block" />
           </form>
         </div>
       </div>

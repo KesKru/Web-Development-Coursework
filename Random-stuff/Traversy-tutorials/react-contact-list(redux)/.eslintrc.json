@@ -15,7 +15,7 @@
       }
     ],
     "jsx-a11y/href-no-hash": 0,
-    "plugins": ["prettier"],
+    "plugins": ["prettier", "react"],
     "react/prefer-stateless-function": 0,
     "react/jsx-one-expression-per-line": 0,
     "import/no-named-as-default": 0,
@@ -25,7 +25,9 @@
     "object-curly-newline": [
       "error",
       {
-        "ObjectPattern": { "multiline": true }
+        "ObjectPattern": {
+          "multiline": true
+        }
       }
     ],
     "arrow-parens": 0,
