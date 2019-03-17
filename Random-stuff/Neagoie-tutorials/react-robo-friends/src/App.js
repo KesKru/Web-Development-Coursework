@@ -1,48 +1,61 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import Card from './components/robots/Card';
 import Header from './components/layout/Header';
 import Search from './components/robots/Search';
 // import ErrorBoundary from './components/ErrorBoundary';
-// import usersData from './robots';
+import { setSearchField } from './actions';
+import { requestRobots } from './actions';
+
+//-----------------------STATE AND ACTIONS TO PROPS-----------------------//
+
+const mapStateToProps = (state) => {
+  return {
+    searchField: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestRobots: () => dispatch(requestRobots())
+  };
+};
+
+//-----------------------COMPONENT-----------------------//
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      users: [],
-      searchield: ''
-    };
-  }
-
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((users) => this.setState({ users: users }));
+    this.props.onRequestRobots();
   }
 
-  onSearchChange = (event) => {
-    this.setState({ searchield: event.target.value });
-  };
+  //-----------------------RENDER-----------------------//
 
   render() {
-    const filteredRobots = this.state.users.filter((user) => {
-      return user.name.toLowerCase().includes(this.state.searchield.toLowerCase());
+    const { searchField, onSearchChange, robots, isPending } = this.props;
+
+    const filteredRobots = robots.filter((robot) => {
+      return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
 
-    return (
+    return isPending ? (
+      <h1>Loading...</h1>
+    ) : (
       <div className="App">
         <Header />
         <div className="container">
-          <Search searchChange={this.onSearchChange} />
+          <Search onSearchChange={onSearchChange} />
           <div className="row">
-            {filteredRobots.map((user) => (
+            {filteredRobots.map((robot) => (
               <Card
-                username={user.name}
-                catchPhrase={user.company.catchPhrase}
-                key={user.id}
-                id={user.id}
+                robotname={robot.name}
+                catchPhrase={robot.company.catchPhrase}
+                key={robot.id}
+                id={robot.id}
               />
             ))}
           </div>
@@ -52,4 +65,9 @@ class App extends Component {
   }
 }
 
-export default App;
+//-----------------------EXPORT AND CONNECT REDUX-----------------------//
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
