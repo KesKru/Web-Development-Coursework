@@ -7,11 +7,13 @@ import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <Navigation />
-        <Logo />
-        <ImageLinkForm />
-        <FaceRecognition />
+        <main className="container">
+          <Logo />
+          <ImageLinkForm />
+          <FaceRecognition />
+        </main>
       </div>
     );
   }
