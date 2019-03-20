@@ -1,5 +1,6 @@
 // Variables
 @import './new-variables';
+
 $theme-colors: (
   'primary': #3b3a36,
   'secondary': #b3c2bf,
@@ -11,11 +12,6 @@ $theme-colors: (
   'dark': #11110f
 );
 $body-bg: rgb(253, 253, 253);
-
-.btn {
-  box-shadow: none;
-  border: none;
-}
 
 // Original bootstrap
 @import './node_modules/bootstrap/scss/bootstrap';
