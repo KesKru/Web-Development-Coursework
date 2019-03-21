@@ -1,17 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navigation() {
   return (
-    <nav className="nav justify-content-end">
-      <a className="nav-link active" href="/">
-        Active
-      </a>
-      <a className="nav-link" href="/">
-        Link
-      </a>
-      <a className="nav-link" href="/">
-        Link
-      </a>
-    </nav>
+    <header>
+      <nav className="nav">
+        <div className="mr-auto">
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+        </div>
+        <div className="">
+          <Link className="nav-link" to="/login">
+            Log In
+          </Link>
+        </div>
+        <div className="">
+          <Link className="nav-link" to="/register">
+            Register
+          </Link>
+        </div>
+      </nav>
+    </header>
   );
 }

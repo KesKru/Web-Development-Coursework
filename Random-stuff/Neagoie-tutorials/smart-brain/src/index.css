@@ -27,35 +27,29 @@ code {
 
 .Tilt {
   margin-top: 30px;
-  /* width: 200px; */
   padding: 25px;
-  /* border-radius: 20px; */
-  fill: white;
-  /* background: linear-gradient(
-    270deg,
-    rgba(188, 109, 204, 0.7) 0%,
-    rgba(0, 198, 255, 0.4) 100%
-  ); */
+  fill: rgb(250, 250, 250);
 }
 
 .face {
   height: 300px;
   height: 200;
   border-radius: 5px;
-  fill: white;
+  fill: rgb(250, 250, 250);
   background: rgba(255, 255, 255, 0.055);
 }
 
 form {
-  color: white;
-  /* margin-top: 25px; */
+  color: rgb(250, 250, 250);
 }
 .rank {
-  color: white;
-  margin-top: 10px;
+  color: rgb(250, 250, 250);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.form-group {
+.form-over-button {
   margin-bottom: 50px;
 }
 .form-control {
@@ -92,13 +86,13 @@ a:hover {
 }
 
 .btn {
-  color: white;
+  color: rgb(250, 250, 250);
 }
 .btn:hover,
 .btn:focus {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   background: rgba(0, 0, 0, 0.055);
-  color: white;
+  color: rgb(250, 250, 250);
 }
 
 .wrap {
@@ -106,9 +100,9 @@ a:hover {
 }
 
 .bounding-box {
-  /* position: relative; */
+  border-radius: 10px;
   position: absolute;
-  box-shadow: inset 0 0 0 3px #149df2;
+  box-shadow: inset 0 0 0 2px rgb(250, 250, 250);
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -117,4 +111,8 @@ a:hover {
   justify-content: center;
   cursor: pointer;
   z-index: 100;
+}
+
+.sign-in {
+  margin-top: 25px;
 }

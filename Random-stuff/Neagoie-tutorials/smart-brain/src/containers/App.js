@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Clarifai from 'clarifai';
 import ParticlesAnimation from '../components/ParticlesAnimation/ParticlesAnimation';
 import Navigation from '../components/Navigation/Navigation';
@@ -6,6 +7,8 @@ import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
 import Logo from '../components/Logo/Logo';
 import FaceRecognition from '../components/FaceRecognition/FaceRecognition';
 import Rank from '../components/Rank/Rank';
+import Login from '../components/Login/Login';
+import Register from '../components/Register/Register';
 
 const app = new Clarifai.App({
   apiKey: '108d10a8214d4ad6b916cff95a07bb6e'
@@ -46,7 +49,7 @@ export default class App extends Component {
 
   onButtonSubmit = () => {
     const { input } = this.state;
-    this.setState({ imageUrl: input });
+    this.setState({ imageUrl: input, box: {} });
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, input)
       .then((response) => {
@@ -59,35 +62,74 @@ export default class App extends Component {
     this.setState({ input: '' });
   };
 
+  onLoginSubmit = () => {
+    console.log('onLoginSubmit');
+  };
+
+  onRegisterSubmit = () => {
+    console.log('onRegisterSubmit');
+  };
+
   render() {
+    const { input, imageUrl, box } = this.state;
+    const {
+      onInputChange,
+      onButtonSubmit,
+      onLoginSubmit,
+      onRegisterSubmit
+    } = this;
     return (
-      <div className="App">
-        {/* <ParticlesAnimation /> */}
-        <Navigation />
-        <main className="container">
-          <Logo />
-          <Rank />
-          <ImageLinkForm
-            onInputChange={this.onInputChange}
-            onButtonSubmit={this.onButtonSubmit}
-            inputValue={this.state.input}
-          />
-          <FaceRecognition
-            imageUrl={this.state.imageUrl}
-            box={this.state.box}
-          />
-        </main>
-      </div>
+      <Router>
+        <div className="App">
+          {/* <ParticlesAnimation /> */}
+          <Navigation />
+          <main className="container">
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={(routeProps) => (
+                  <div>
+                    <Logo />
+                    <Rank />
+                    <ImageLinkForm
+                      // {...routeProps}
+                      onInputChange={onInputChange}
+                      onButtonSubmit={onButtonSubmit}
+                      inputValue={input}
+                    />
+                    <FaceRecognition
+                      // {...routeProps}
+                      imageUrl={imageUrl}
+                      box={box}
+                    />
+                  </div>
+                )}
+              />
+              <Route
+                exact
+                path="/login"
+                render={(routeProps) => (
+                  <div>
+                    <Logo />
+                    <Login onLoginSubmit={onLoginSubmit} />
+                  </div>
+                )}
+              />
+              <Route
+                exact
+                path="/register"
+                render={(routeProps) => (
+                  <div>
+                    <Logo />
+                    <Register onRegisterSubmit={onRegisterSubmit} />
+                  </div>
+                )}
+              />
+            </Switch>
+          </main>
+        </div>
+      </Router>
     );
   }
 }
-
-/* Clarify API request with my key
-app.models.predict("108d10a8214d4ad6b916cff95a07bb6e", "https://samples.clarifai.com/face-det.jpg").then(
-    function(response) {
-      // do something with response
-    },
-    function(err) {
-      // there was an error
-    }
-  ); */

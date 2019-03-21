@@ -8,7 +8,7 @@ export default function ImageLinkForm({
   return (
     <div className="row justify-content-center">
       {/* <form className="col-6"> */}
-      <div className="col-6 form-group">
+      <div className="col-6 form-group form-over-button">
         <input
           type="text"
           className="form-control"
