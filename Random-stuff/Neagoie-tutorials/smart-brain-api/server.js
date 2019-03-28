@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const database = {
   users: [
@@ -30,6 +32,13 @@ const database = {
       entries: 0,
       joined: new Date()
     }
+  ],
+  login: [
+    {
+      id: '1',
+      hash: '',
+      email: '1ohn@gmail.com'
+    }
   ]
 };
 
@@ -49,6 +58,7 @@ app.post('/login', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
+  console.log(req.body);
   const { name, email, password } = req.body;
   database.users.push({
     id: '4',
@@ -90,17 +100,14 @@ app.put('/image', (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('App is running on port 3000');
+app.listen(4000, () => {
+  console.log('App is running on port 4000');
 });
 
 /* 
-
 /              - GET - this is working
 /login         - POST - succes/faill
 /register      - POST - new user object
 /profile/:id   - GET - user object
 /image         - PUT - user object
-
-
 */

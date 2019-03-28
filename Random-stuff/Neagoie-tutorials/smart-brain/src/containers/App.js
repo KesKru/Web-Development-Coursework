@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Clarifai from 'clarifai';
+// Componenets
 import ParticlesAnimation from '../components/ParticlesAnimation/ParticlesAnimation';
 import Navigation from '../components/Navigation/Navigation';
 import ImageLinkForm from '../components/ImageLinkForm/ImageLinkForm';
@@ -21,9 +22,28 @@ export default class App extends Component {
     this.state = {
       input: '',
       imageUrl: '',
-      box: {}
+      box: {},
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     };
   }
+
+  loadUser = (userData) => {
+    this.setState({
+      user: {
+        id: userData.id,
+        name: userData.name,
+        email: userData.email,
+        entries: userData.entries,
+        joined: userData.joined
+      }
+    });
+  };
 
   calculateFaceLocation = (data) => {
     const boundingBox =
@@ -47,12 +67,30 @@ export default class App extends Component {
     this.setState({ input: event.target.value });
   };
 
-  onButtonSubmit = () => {
-    const { input } = this.state;
+  onPictureSubmit = () => {
+    const { input, user } = this.state;
     this.setState({ imageUrl: input, box: {} });
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, input)
       .then((response) => {
+        if (response) {
+          fetch('http://localhost:4000/image', {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              id: user.id
+            })
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              this.setState({
+                user: {
+                  ...user,
+                  entries: res
+                }
+              });
+            });
+        }
         this.displayFacebox(this.calculateFaceLocation(response));
       })
       .catch((err) => {
@@ -62,21 +100,14 @@ export default class App extends Component {
     this.setState({ input: '' });
   };
 
-  onLoginSubmit = () => {
-    console.log('onLoginSubmit');
-  };
-
-  onRegisterSubmit = () => {
-    console.log('onRegisterSubmit');
-  };
-
   render() {
-    const { input, imageUrl, box } = this.state;
+    const { input, imageUrl, box, user } = this.state;
     const {
       onInputChange,
-      onButtonSubmit,
+      onPictureSubmit,
       onLoginSubmit,
-      onRegisterSubmit
+      onRegisterSubmit,
+      loadUser
     } = this;
     return (
       <Router>
@@ -91,11 +122,11 @@ export default class App extends Component {
                 render={(routeProps) => (
                   <div>
                     <Logo />
-                    <Rank />
+                    <Rank user={user} />
                     <ImageLinkForm
                       // {...routeProps}
                       onInputChange={onInputChange}
-                      onButtonSubmit={onButtonSubmit}
+                      onPictureSubmit={onPictureSubmit}
                       inputValue={input}
                     />
                     <FaceRecognition
@@ -112,7 +143,7 @@ export default class App extends Component {
                 render={(routeProps) => (
                   <div>
                     <Logo />
-                    <Login onLoginSubmit={onLoginSubmit} />
+                    <Login onLoginSubmit={onLoginSubmit} loadUser={loadUser} />
                   </div>
                 )}
               />
@@ -122,7 +153,10 @@ export default class App extends Component {
                 render={(routeProps) => (
                   <div>
                     <Logo />
-                    <Register onRegisterSubmit={onRegisterSubmit} />
+                    <Register
+                      onRegisterSubmit={onRegisterSubmit}
+                      loadUser={loadUser}
+                    />
                   </div>
                 )}
               />

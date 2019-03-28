@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ImageLinkForm({
   onInputChange,
-  onButtonSubmit,
+  onPictureSubmit,
   inputValue
 }) {
   return (
@@ -20,7 +20,7 @@ export default function ImageLinkForm({
         <button
           type="submit"
           className="btn btn-outline-primary btn-block submit-button"
-          onClick={onButtonSubmit}
+          onClick={onPictureSubmit}
         >
           Detect
         </button>
