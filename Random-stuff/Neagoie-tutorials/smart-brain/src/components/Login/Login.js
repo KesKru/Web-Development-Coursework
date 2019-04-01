@@ -21,7 +21,7 @@ export default class Login extends Component {
 
   onLoginSubmit = () => {
     const { loginEmail, loginPassword } = this.state;
-    const { loadUser } = this.props;
+    const { loadUser, isLogedInTrue } = this.props;
     fetch('http://localhost:4000/login', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -32,6 +32,7 @@ export default class Login extends Component {
     })
       .then((userData) => userData.json())
       .then((userData) => loadUser(userData));
+    isLogedInTrue();
   };
 
   render() {

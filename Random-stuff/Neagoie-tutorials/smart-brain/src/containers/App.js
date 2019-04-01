@@ -23,6 +23,7 @@ export default class App extends Component {
       input: '',
       imageUrl: '',
       box: {},
+      isLogedIn: false,
       user: {
         id: '',
         name: '',
@@ -42,6 +43,20 @@ export default class App extends Component {
         entries: userData.entries,
         joined: userData.joined
       }
+    });
+  };
+
+  isLogedInTrue = () => {
+    this.setState({
+      isLogedIn: true
+    });
+  };
+
+  isLogedInFalse = () => {
+    this.setState({
+      imageUrl: '',
+      isLogedIn: false,
+      user: {}
     });
   };
 
@@ -101,19 +116,25 @@ export default class App extends Component {
   };
 
   render() {
-    const { input, imageUrl, box, user } = this.state;
+    const { input, imageUrl, box, user, isLogedIn } = this.state;
     const {
       onInputChange,
       onPictureSubmit,
       onLoginSubmit,
       onRegisterSubmit,
-      loadUser
+      loadUser,
+      isLogedInTrue,
+      isLogedInFalse
     } = this;
     return (
       <Router>
         <div className="App">
           {/* <ParticlesAnimation /> */}
-          <Navigation />
+          <Navigation
+            isLogedIn={isLogedIn}
+            isLogedInFalse={isLogedInFalse}
+            isLogedInTrue={isLogedInTrue}
+          />
           <main className="container">
             <Switch>
               <Route
@@ -122,7 +143,7 @@ export default class App extends Component {
                 render={(routeProps) => (
                   <div>
                     <Logo />
-                    <Rank user={user} />
+                    <Rank user={user} isLogedIn={isLogedIn} />
                     <ImageLinkForm
                       // {...routeProps}
                       onInputChange={onInputChange}
@@ -143,7 +164,11 @@ export default class App extends Component {
                 render={(routeProps) => (
                   <div>
                     <Logo />
-                    <Login onLoginSubmit={onLoginSubmit} loadUser={loadUser} />
+                    <Login
+                      onLoginSubmit={onLoginSubmit}
+                      loadUser={loadUser}
+                      isLogedInTrue={isLogedInTrue}
+                    />
                   </div>
                 )}
               />
