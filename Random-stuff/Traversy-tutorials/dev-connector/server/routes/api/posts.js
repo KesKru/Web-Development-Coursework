@@ -10,13 +10,6 @@ const validatePostInput = require('../../validation/post');
 const Post = require('../../models/Post');
 const Profile = require('../../models/Profile');
 
-// @route GET api/posts/test
-// @description Test posts route
-// @access Public
-router.get('/test', (req, res) => {
-  res.json({ msg: 'posts works' });
-});
-
 // @route GET api/posts
 // @description Get all posts
 // @access Public
@@ -45,7 +38,7 @@ router.get('/:id', (req, res) => {
 });
 
 // @route POST api/posts
-// @description create post
+// @description Create new post
 // @access Private
 router.post(
   '/',
@@ -102,7 +95,7 @@ router.post(
   }
 );
 // @route POST api/posts/like/:id
-// @description Like a post
+// @description Unlike a post
 // @access Private
 router.post(
   '/unlike/:id',
@@ -174,8 +167,36 @@ router.post(
   }
 );
 
+// @route DELETE api/posts/:id
+// @description Delete a post
+// @access Private
+router.delete(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user._id }).then((profile) => {
+      Post.findById(req.params.id).then((post) => {
+        //check for post owner
+        if (post.user.toString() !== req.user.id) {
+          return res
+            .status(401)
+            .json({ not_authorized: 'User not authorized' });
+        }
+        post
+          .remove()
+          .then(() => {
+            res.json({ succes: 'Post removed' });
+          })
+          .catch((err) => {
+            res.json(err);
+          });
+      });
+    });
+  }
+);
+
 // @route DELETE api/posts/comment/:id/:comment_id
-// @description Add comment to post
+// @description Delete comment to post
 // @access Private
 router.delete(
   '/comment/:id/:comment_id',
@@ -200,34 +221,6 @@ router.delete(
       post.comments.splice(removeIndex, 1);
       post.save().then((post) => {
         res.json(post);
-      });
-    });
-  }
-);
-
-// @route DELETE api/posts/:id
-// @description Delete a post
-// @access Private
-router.delete(
-  '/:id',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    Profile.findOne({ user: req.user._id }).then((profile) => {
-      Post.findById(req.params.id).then((post) => {
-        //check for post owner
-        if (post.user.toString() !== req.user.id) {
-          return res
-            .status(401)
-            .json({ not_authorized: 'User not authorized' });
-        }
-        post
-          .remove()
-          .then(() => {
-            res.json({ succes: 'Post removed' });
-          })
-          .catch((err) => {
-            res.json(err);
-          });
       });
     });
   }

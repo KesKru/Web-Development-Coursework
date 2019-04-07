@@ -240,7 +240,7 @@ router.post(
 );
 
 // @route POST api/profiles/experiance
-// @description Add experiance to profile
+// @description Add education to profile
 // @access Private
 router.post(
   '/education',

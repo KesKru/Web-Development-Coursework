@@ -30,6 +30,21 @@ router.get('/all', (req, res) => {
     });
 });
 
+// @route POST api/users/current
+// @description return current user
+// @access Private
+router.get(
+  '/current',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
+    });
+  }
+);
+
 // @route POST api/users/register
 // @description Register a user
 // @access Public
@@ -114,20 +129,5 @@ router.post('/login', (req, res) => {
     });
   });
 });
-
-// @route POST api/users/current
-// @description return current user
-// @access Private
-router.get(
-  '/current',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    res.json({
-      id: req.user.id,
-      name: req.user.name,
-      email: req.user.email
-    });
-  }
-);
 
 module.exports = router;
