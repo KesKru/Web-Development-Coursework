@@ -28,14 +28,23 @@ $green: #4caf50 !default;
 $teal: #20c997 !default;
 $cyan: #9c27b0 !default;
 
-$primary: $blue !default;
-$secondary: $white !default;
-$success: $green !default;
-$info: $cyan !default;
-$warning: $yellow !default;
-$danger: $red !default;
-$light: $white !default;
-$dark: $gray-800 !default;
+// $primary: $blue !default;
+// $secondary: $white !default;
+// $success: $green !default;
+// $info: $cyan !default;
+// $warning: $yellow !default;
+// $danger: $red !default;
+// $light: $white !default;
+// $dark: $gray-800 !default;
+
+$primary: #2f3c48 !default;
+$secondary: #6f7f8c !default;
+$success: #5cb19a !default;
+$info: #6e9fa5 !default;
+$warning: #efb74e !default;
+$danger: #d85838 !default;
+$light: #eceeec !default;
+$dark: #1e2b37 !default;
 
 $yiq-contrasted-threshold: 170 !default;
 
@@ -43,7 +52,7 @@ $enable-gradients: false;
 
 // Body
 
-$body-color: $gray-700 !default;
+$body-color: #e6ecf0 !default;
 
 // Fonts
 
@@ -87,7 +96,7 @@ $input-group-addon-bg: transparent !default;
 
 $custom-control-gutter: 1.75rem !default;
 
-$custom-control-indicator-focus-box-shadow: 0 !default;
+$custom-control-indicator-focus-box-shadow: none !default;
 
 $custom-control-indicator-size: 1.25rem !default;
 $custom-control-indicator-bg: $white;

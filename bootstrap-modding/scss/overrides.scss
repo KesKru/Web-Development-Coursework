@@ -1,0 +1,92 @@
+//---------------------------------------------------------//
+@import '../node_modules/bootstrap/scss/functions';
+//----------------------- ---------------------------------//
+//Custom variables overides
+
+// Colors scheme
+$white: #fff !default;
+$gray-100: #fafafa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+//
+$primary: #3c4e5f !default;
+$secondary: #6f7f8c !default;
+$success: #5cb19a !default;
+$info: #6e9fa5 !default;
+$warning: #efb74e !default;
+$danger: #d85838 !default;
+$light: #fff !default;
+$dark: #1e2b37 !default;
+//Background
+$body-bg: $gray-100 !default;
+//Fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+$font-family-sans-serif: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-size-base: 0.95rem !default;
+$font-weight-base: 300 !default;
+
+//---------------------------------------------------------//
+@import '../node_modules/bootstrap/scss/mixins';
+@import '../node_modules/bootstrap/scss/bootstrap';
+//---------------------------------------------------------//
+// Custom css overides
+
+.navbar {
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.jumbotron {
+  background-color: $light;
+}
+//
+.form-control {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-bottom: 1.2px solid $primary;
+  border-radius: 7px 7px 0 0;
+  &:focus {
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 1.5px solid;
+  }
+  &::placeholder {
+    color: $gray-500;
+  }
+}
+
+.navbar-dark .form-control {
+  color: $light;
+  border-bottom: 1px solid $light;
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1.5px solid;
+    color: $light;
+  }
+  &::placeholder {
+    color: $gray-500;
+  }
+}
+
+//
+#inputValid,
+#inputInvalid {
+  box-shadow: none;
+}
+//
+.btn:focus,
+.btn:active {
+  box-shadow: none !important;
+}
+//
+.page-link:focus,
+.page-link:active {
+  box-shadow: none;
+}
